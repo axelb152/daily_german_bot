@@ -1,4 +1,4 @@
-# README
+# A random daily German word with translation, right to your Whatsapp
 
 ## License
 
@@ -14,6 +14,18 @@ This project uses the Deepl free API and also uses Twilio (premium account for t
 You will need both of these and their respective API keys for your `.env` file if you want to make the rake task exectuable. Both have great documentation.
 
 # If you like what you see, please give it a ⭐️
+
+## rake task output
+
+run `bundle exec rake daily_reminder:send` in your terminal to test the rake task, you should then get this to know it's working:
+
+```
+ (called from <main> at /Users/axel/projects/daily_german_bot/daily_german_bot/config/environment.rb:5)
+Sent daily reminder: Guten Tag!!!
+Hier ist deine tägliche Vokabeln-Errinerung:
+🇩🇪  Froschart
+🇬🇧  Frog species
+```
 
 * ### Potential To-Do List and Next Steps:
 
