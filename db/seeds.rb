@@ -12,7 +12,7 @@ total_batches = (total_records / batch_size).ceil
 puts "Processing #{total_records} records in #{total_batches} batches of #{batch_size} records each..."
 
 json_data.each_slice(batch_size).with_index do |batch, index|
-  SeedVocabularyJob.perform_later(batch)
+  SeedVocabularyJob.perform_async(batch)
   puts "Enqueued batch #{index + 1} of #{total_batches}..."
 end
 
