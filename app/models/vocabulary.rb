@@ -9,11 +9,14 @@
 #  updated_at  :datetime         not null
 #
 class Vocabulary < ApplicationRecord
+  validates :word, presence: true, uniqueness: true
+  validates :translation, presence: true
+
   before_create :fetch_translation
 
   private
 
   def fetch_translation
-    self.translation = DeeplService.translate(self.word, 'EN')
+    self.translation = DeepLService.translate(self.word, 'EN')
   end
 end
