@@ -16,7 +16,7 @@ class Vocabulary < ApplicationRecord
     return unless self.translation.blank?
 
     translated_text = DeeplService.translate(self.word, 'EN')
-    self.update(translated: translated_text)
+    self.update(translation: translated_text)
 
   end
 end
