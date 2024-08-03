@@ -11,4 +11,12 @@
 class Vocabulary < ApplicationRecord
   validates :word, presence: true, uniqueness: true
   # validates :translation, allow_blank: true
+
+  def fetch_translation
+    return unless self.translation.blank?
+
+    translated_text = DeepLService.translate(self.word, 'EN')
+    self.update(translated: translated_text)
+
+  end
 end

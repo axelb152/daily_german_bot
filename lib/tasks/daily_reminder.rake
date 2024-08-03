@@ -1,8 +1,9 @@
 namespace :daily_reminder do
   desc "Send daily German vocab reminder via Whatsapp"
-  
+
   task send: :environment do
     vocab = Vocabulary.find(Vocabulary.pluck(:id).sample)
+    vocab.fetch_translation
     message = "
                 Guten Tag!!! Hier ist deine tägliche Vokabeln-Errinerung:
                 🇩🇪 - #{vocab.word}
