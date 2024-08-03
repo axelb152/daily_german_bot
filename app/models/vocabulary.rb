@@ -14,6 +14,6 @@ class Vocabulary < ApplicationRecord
   private
 
   def fetch_translation
-    self.translation = DeepLService.translate(self.word, 'EN')
+    self.translation = DeeplService.translate(self.word, 'EN')
   end
 end
