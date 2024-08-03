@@ -9,7 +9,9 @@ class SeedVocabularyJob
       ActiveRecord::Base.connection_pool.with_connection do
         Vocabulary.transaction do
           batch.each do |entry|
-            Vocabulary.find_or_create_by!(word: entry['word'])
+            Vocabulary.find_or_create_by!(word: entry['word']) do |vocab|
+              vocab.translation = entry['translation'] if entry['translation'].present?
+            end
           end
         end
       end

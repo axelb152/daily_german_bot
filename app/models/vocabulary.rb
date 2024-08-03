@@ -10,13 +10,13 @@
 #
 class Vocabulary < ApplicationRecord
   validates :word, presence: true, uniqueness: true
-  validates :translation, presence: true
+  validates :translation, presence: true, allow_blank: true
 
-  before_create :fetch_translation
+  before_create :fetch_translation, if: :new_record?
 
   private
 
   def fetch_translation
-    self.translation = DeepLService.translate(self.word, 'EN')
+    self.translation ||= DeepLService.translate(self.word, 'EN')
   end
 end
