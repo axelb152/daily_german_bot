@@ -1,0 +1,19 @@
+namespace :daily_reminder do
+  desc "Send daily German vocab reminder via Whatsapp"
+  
+  task send: :environment do
+    vocab = Vocabulary.find(Vocabulary.pluck(:id).sample)
+    message = "
+                Guten Tag!!! Hier ist deine tägliche Vokabeln-Errinerung:
+                🇩🇪 - #{vocab.word}
+                🇬🇧 - #{vocab.translation}
+              "
+    user_phone_numbers = ENV['USER_PHONE_NUMBERS'].split(', ')
+
+    user_phone_numbers.each do |number|
+      TwilioService.send_whatsapp_message(number, message)
+    end
+    puts "Sent daily reminder: #{message}"
+  end
+
+end
