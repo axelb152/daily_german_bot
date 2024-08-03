@@ -10,5 +10,5 @@
 #
 class Vocabulary < ApplicationRecord
   validates :word, presence: true, uniqueness: true
-  validates :translation, allow_blank: true
+  # validates :translation, allow_blank: true
 end
