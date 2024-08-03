@@ -6,6 +6,7 @@ ruby '3.3.3'
 gem 'twilio-ruby'
 gem 'http'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'whenever', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7', '>= 6.1.7.7'
